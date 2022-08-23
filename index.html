@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concorrência Pública - Imóveis PAR</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="estilo.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -32,7 +34,6 @@
     </div>
     
     <div id="wrapper">
-       
         <nav class="navbar static-top p-2" id="corNav">            
             <button class="navbar-toggler" style="color:white;" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavBar" aria-controls="menuNavBar" aria-expanded="false">
                 <span role="button">
@@ -48,6 +49,11 @@
             <div class="collapse navbar-collapse" id="menuNavBar">
                 <ul class="navbar-nav mr-auto" >
                     <li class="nav-item active" >
+                        <a class="nav-link linksNav" id="todosImoveis" href="imoveisUF.html">
+                            Buscar Imóveis
+                        </a>
+                    </li>
+                    <li class="nav-item active" >
                         <a class="nav-link linksNav" id="todosImoveis" href="todosImoveis.html">
                             Ver Imóveis Disponíveis
                         </a>
@@ -57,119 +63,54 @@
                             Ver Editais
                         </a>
                     </li>                    
-                    <li class="nav-item active" >
+                    <li class="nav-item active d-none">
                         <a class="nav-link linksNav" href="faq.html">
                             Perguntas Frequentes
                         </a>
                     </li>
                 </ul>
             </div>
-          </nav>
+        </nav>
 
         <div class="body-content">
             <main> 
                 <section class="texto">
                     <p class= "fs-5 lh-lg mt-3">Acompanhe o edital e todas as condições para participar.</p>
                     <h5 class="mt-3"><b>Aproveite esta Oportunidade!</b></h5>
+                    <a class="btn btn-sm m-auto" role="button" href="todosImoveis.html" style="background-color: #005ca9; color: white;">
+                        Clique para ver os Imóveis Disponíveis
+                    </a>
                 </section>
-                <hr>
-                <section class="row texto textoMobile">
-                    <p><b>EDITAL Nº 0001 / 2022</b> - CONCORRÊNCIA PÚBLICA</p>
-                    <p>Período de entrega das propostas: 19/08/2022 a 19/09/2022 de 10 h às 16 h</p>
-                    <div class="col-2 m-auto">
-                        <a class="btn btn-sm m-auto" role="button" href="EC00012022FARVESP.pdf" download style="background-color: #005ca9; color: white;">
-                            <i class="fas fa-download"></i> Edital
-                        </a>
-                    </div>
-                </section>
-                <hr>
-                <section class="row texto mb-2 textoMobile">
-                    <p><b>EDITAL Nº 0002 / 2022</b> - CONCORRÊNCIA PÚBLICA</p>
-                    <p>Período de entrega das propostas: 19/08/2022 a 19/09/2022 de 10 h às 16 h</p>
-                    <div class="col-2 m-auto">
-                        <a class="btn btn-sm m-auto" role="button" href="EC00022022FARSP.pdf" download style="background-color: #005ca9; color: white;">
-                            <i class="fas fa-download"></i> Edital
-                        </a>
-                    </div>
-                </section>
-                <!-- <section class="col-md-12 container clearfix" id="containerPar">
-                    <div class="row">
-                        <div class="col-md-6" style="text-align: right;">
-                            <p class="fs-5 lh-lg">Selecione o Estado do seu imóvel:</p>
+                <section class="edital pl-4 pr-4 pt-2">
+                    <div class="card-deck texto textoMobile">
+                        <div class="card ">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>EDITAL Nº 0001 / 2022</b> - CONCORRÊNCIA PÚBLICA</h5>
+                                <p class="card-text">Período de entrega das propostas: 19/08/2022 a 19/09/2022 de 10 h às 16 h</p>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-sm m-auto" role="button" href="EC00012022FARVESP.pdf" download style="background-color: #005ca9; color: white;">
+                                    <i class="fas fa-download"></i> Edital
+                                </a>
+                            </div>
                         </div>
-                    
-                        <div class="col-md-4" style="text-align: center;">
-                            <select class="form-select form-select-sm" id="Estado"; aria-label="Default select example">
-                                <option selected disabled>Selecione o seu Estado</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                            </select>                        
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>EDITAL Nº 0002 / 2022</b> - CONCORRÊNCIA PÚBLICA</h5>
+                                <p class="card-text">Período de entrega das propostas: 19/08/2022 a 19/09/2022 de 10 h às 16 h</p>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-sm m-auto" role="button" href="EC00012022FARVESP.pdf" download style="background-color: #005ca9; color: white;">
+                                    <i class="fas fa-download"></i> Edital
+                                </a>
+                            </div>
                         </div>
-                    </div>       
-
-                    <div id="tabelaGeral" style="display:none;" >
-                        <table id="tblImoveisPar" class="display text-center table" cellspacing="0" width="80%" role="table">
-                            <thead role="rowgroup" class="thead">
-                                <tr role="row">
-                                    <th role="columnheader">Administradora</th>
-                                    <th role="columnheader">Estado</th>
-                                    <th role="columnheader">Telefone</th>
-                                    <th role="columnheader">Telefone</th>
-                                    <th role="columnheader">E-mail</th>
-                                </tr>
-                            </thead>
-                            <tbody role="rowgroup">
-                                
-                            </tbody>
-                        </table>
                     </div>
-
-                    <div style="display:none;" id="dadosAdm">
-                        <table class="display text-center table table-hover" cellspacing="0" width="80%" role="table" id="tblDadosAdm">
-                            <thead role="rowgroup" class="thead-light">
-                                <tr role="row">
-                                    <th role="columnheader">Administradora</th>
-                                    <th role="columnheader">Estado</th>
-                                    <th role="columnheader">Telefone</th>
-                                    <th role="columnheader">Telefone</th>
-                                    <th role="columnheader">E-mail</th>
-                                </tr>
-                            </thead>
-                            <tbody role="rowgroup">
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </section> -->
+                </section>
             </main>
-            
+
             <footer class="mt-4" id="rodape">
-                <div class="container mt-2">
+                <div class="container mt-2 ml-0">
                     <ul class="list-unstyled texto-contato">
                         <li>Alô CAIXA - 4004 0 104 (Capitais e Regiões Metropolitanas)</li>
                         <li>Alô CAIXA - 0800 104 0 104 (Demais Regiões)</li>
@@ -179,14 +120,16 @@
                     </ul>
                 </div>
             </footer>
-
         </div>
     </div>
+    <script type="text/javascript" src="saudacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="dadosImoveis.js"> </script>
-    <script type="text/javascript" src="script.js"></script>     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $( document ).ready(function() {
+            $('.loadingPagina').css('display', 'none')
+        });
+    </script>
         
 </body>
 </html>

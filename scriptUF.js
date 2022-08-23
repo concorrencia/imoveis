@@ -70,31 +70,73 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
 
 $( document ).ready(function() {
     $('.loadingPagina').css('display', 'block')
-    
-    dados.forEach(function(item, index){
-        var venda = item.VALOR_VENDA
-        var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
 
-        var linha =
-            `<tr> 
-                <td>${item.UF}</td> 
-                <td>${item.CIDADE}</td> 
-                <td>${item.ENDERECO_IMOVEL} - ${item.CEP}</td> 
-                <td>${item.EMPREENDIMENTO}</td> 
-                <td>${item.NU_IMOVEL}</td> 
-                <td>${valorMinimo}</td> 
-                <td>
-                    <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
-                        <small>Acesse o link</small>
-                    </a>
-                </td> 
-            </tr>`;
+    function uniqueByKey(dados, key) {
+        return [...new Map(dados.map((x) => [x[key], x])).values()];
+    }
+            
+    var cidades = uniqueByKey(dados, 'CIDADE');
+
+    cidades.forEach(function(valores, index){
+        var estadoSelecionado = valores.UF
         
-        $(linha).appendTo('#tblImoveisPar>tbody');
-    });
+        if(estadoPar = estadoSelecionado){
+            var opcao = 
+            `
+                <option value="${valores.CIDADE}">${valores.CIDADE}</option>
+            `
+            $(opcao).appendTo('#select'+estadoPar);
+        }
+    })
 
-    // _datatable('tblImoveisPar', '0', 'asc', 10)
-    _datatableSoExcel('tblImoveisPar', '0', 'asc', 'Imoveis Concorrencia Publica PAR', 10)
+    $(document).on('change', '#Estado', function(){
+
+        $('.escolhaCidade').css('display','block');
+        var dadosEstado = $(this).val();
+        $('.opcoesCidades').css('display','none');
+        $('#select'+dadosEstado).css('display','block');
+
+        $(document).on('change', '#select'+dadosEstado, function(){
+            
+            var cidadeEscolhida = $(this).val()
+
+            dados.forEach(function(item, index){
+
+                var venda = item.VALOR_VENDA
+                var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+                var cidadeBancoDados = item.CIDADE
+                var cidadeSemEspaco = cidadeBancoDados.replace(/\s/g, '');
+
+                if (cidadeEscolhida == cidadeBancoDados){
+
+                    $('#dadosUF').css('display','block');
+
+                    var linha =
+                        `<tr> 
+                            <td class='${cidadeSemEspaco}'>${item.UF}</td> 
+                            <td class='${cidadeSemEspaco}'>${item.CIDADE}</td> 
+                            <td class='${cidadeSemEspaco}'>${item.ENDERECO_IMOVEL} - ${item.CEP}</td> 
+                            <td class='${cidadeSemEspaco}'>${item.EMPREENDIMENTO}</td> 
+                            <td class='${cidadeSemEspaco}'>${item.NU_IMOVEL}</td> 
+                            <td class='${cidadeSemEspaco}'>${valorMinimo}</td> 
+                            <td class='${cidadeSemEspaco}'>
+                                <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
+                                    <small>Acesse o link</small>
+                                </a>
+                            </td> 
+                        </tr>`;
+
+                    $(linha).appendTo('#tblDadosUF>tbody');
+                
+                } else{
+                    $('.'+cidadeSemEspaco).remove();
+                }
+            
+            });
+            // _datatableSoExcel('tblDadosUF', '0', 'asc', 'Imoveis Concorrencia Publica PAR', 10)
+        });
+    })
+
     $('.loadingPagina').css('display', 'none')
    
 })

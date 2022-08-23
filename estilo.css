@@ -1,215 +1,243 @@
 @font-face {
-    font-family: "Futura";
-    src: url("FuturaStdBook.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Futura";
+  src: url("FuturaStdBook.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Futura", "Poppins", "Open Sans", sans-serif;
+}
+
+.carregando{
+  opacity:1;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1000;
+}
+
+.carregando div{
+  background-color: white;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 40px 60px;
+}
+
+.carregando div i{
+  color: #005ca9;
+  padding: 10px;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+div.body-content {
+  /** Altura do rodapé tem que ser igual a isso aqui e vice-versa **/
+  padding-bottom: 115px;
+  padding-top: 10px;
+}
+
+
+/* .headerPar {
+    font-family: Futura, 'Open Sans', sans-serif;
+    background: linear-gradient( 45deg, #005CA9, #54BBAB);
+    color: #EFF5F6;
+    width: 100%;
+    height: 100px;
+    left: 0;
+} */
+
+#corNav {
+  background-image: linear-gradient(45deg, #005ca9, #54bbab);
+}
+
+#ola {
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+#logo {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+#todosImoveis {
+  font-size: medium;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.linksNav {
+  color: #ffffff !important;
+}
+
+.nav-item :hover {
+  text-decoration: underline !important;
+}
+
+.texto {
+  color: #005ca9;
+  text-align: center;
+}
+
+#containerPar {
+  justify-content: center;
+  color: #005ca9;
+  text-align: center;
+}
+
+#Estado {
+  height: auto;
+}
+
+#tblDadosAdm {
+  background: #ffffff;
+  color: #48586c;
+}
+
+/* footer {
+  width: 100%;
+  height: 62px;
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: end;
+} */
+
+#rodape {
+  font-size: 1rem;
+  color: #ffffff;
+  background-image: linear-gradient(45deg, #005ca9, #54bbab);
+  width: 100%;
+  height: 115px;
+  /* padding: 8px; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: start;
+}
+
+.texto-contato{
+  font-size:0.75rem;
+  color: #ffffff;
+  text-align: start;
+  float: left; 
+} 
+
+table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    color: #48586c;
   }
-  
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+
+.edital{
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .edital{
+    margin-top: 10px;
   }
-  
-  #wrapper {
-    min-height: 100%;
-    position: relative;
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    color: #48586c;
   }
-  
-  div.body-content {
-    /** Altura do rodapé tem que ser igual a isso aqui e vice-versa **/
-    padding-bottom: 115px;
-    padding-top: 10px;
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
-  
-  
-  /* .headerPar {
-      font-family: Futura, 'Open Sans', sans-serif;
-      background: linear-gradient( 45deg, #005CA9, #54BBAB);
-      color: #EFF5F6;
-      width: 100%;
-      height: 100px;
-      left: 0;
-  } */
-  
-  #corNav {
-    background-image: linear-gradient(45deg, #005ca9, #54bbab);
+
+  tr {
+    margin: 0 0 1rem 0;
   }
-  
-  #ola {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-family: Futura, "Open Sans", sans-serif;
-  }
-  
-  #saudacao {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-family: Futura, "Open Sans", sans-serif;
-  }
-  
-  #logo {
-    color: #ffffff;
-    font-size: 1rem;
-    font-family: Futura, "Open Sans", sans-serif;
-  }
-  
-  #todasAdm {
-    font-size: medium;
-    cursor: pointer;
-    color: #ffffff;
-  }
-  
-  .linksNav {
-    font-family: Futura, "Open Sans", sans-serif;
-    color: #ffffff !important;
-  }
-  
-  .nav-item :hover {
-    text-decoration: underline !important;
-  }
-  
-  #texto {
-    color: #005ca9;
-    font-family: Futura, "Open Sans", sans-serif;
-    text-align: center;
-  }
-  
-  #containerPar {
-    font-family: Futura, "Open Sans", sans-serif;
-    justify-content: center;
-    color: #005ca9;
-    text-align: center;
-  }
-  
-  #Estado {
-    height: auto;
-  }
-  
-  #tblDadosAdm {
+
+  tr:nth-child(odd) {
     background: #ffffff;
-    color: #48586c;
   }
-  
-  /* footer {
-    width: 100%;
-    height: 62px;
-    padding: 8px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    text-align: end;
-  } */
-  
-  #rodape {
-    font-size: 1rem;
-    font-family: Futura, "Open Sans", sans-serif;
-    color: #ffffff;
-    background-image: linear-gradient(45deg, #005ca9, #54bbab);
-    width: 100%;
-    height: 115px;
-    /* padding: 8px; */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    text-align: start;
-    
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    padding-left: 50%;
+    background: #ffffff;
   }
-  
-  .texto-contato{
-    font-size:0.75rem;
-    font-family: Futura, "Open Sans", sans-serif;
-    color: #ffffff;
-    text-align: start;
-    float: left; 
-  } 
-  
-  
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-      display: block;
-    }
-  
-    thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-    }
-  
-    tr {
-      margin: 0 0 1rem 0;
-    }
-  
-    tr:nth-child(odd) {
-      background: #ffffff;
-      color: #48586c;
-    }
-  
-    td {
-      border: none;
-      border-bottom: 1px solid #ccc;
-      position: relative;
-      padding-left: 50%;
-      background: #ffffff;
-    }
-  
-    td:before {
-      position: center;
-      top: 0;
-      left: 6px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-    }
-  
-    td:nth-of-type(1):before {
-      content: "";
-    }
-    td:nth-of-type(2):before {
-      content: "";
-    }
-    td:nth-of-type(3):before {
-      content: "";
-    }
-    /* td:nth-of-type(4):before {content: "Whatsapp?";} */
-    td:nth-of-type(5):before {
-      content: "";
-    }
-    /* td:nth-of-type(6):before {content: "Whatsapp?";} */
-    td:nth-of-type(7):before {
-      content: "";
-    }
+
+  td:before {
+    position: center;
+    top: 0;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
   }
-  
-  /* perguntas frequentes */
-  
-  .cardConfig {
-    color: #005ca9;
-    font-family: Futura, "Open Sans", sans-serif;
-    text-align: left;
-    font-size: 1.1rem;
+
+  td:nth-of-type(1):before {
+    content: "";
   }
-  
-  .accordion .card .card-header :hover{
-    cursor: pointer;
-    text-decoration: underline;
+  td:nth-of-type(2):before {
+    content: "";
   }
-  
-  .respostaConfig {
-    color: #48586c;
-    font-family: Futura, "Open Sans", sans-serif;
+  td:nth-of-type(3):before {
+    content: "";
   }
-  
-  .linkAdm {
-    color: #005ca9;
-    font-family: Futura, "Open Sans", sans-serif;
-    text-decoration: none;
+  /* td:nth-of-type(4):before {content: "Whatsapp?";} */
+  td:nth-of-type(5):before {
+    content: "Nº Imóvel CAIXA: ";
   }
-  
+  /* td:nth-of-type(6):before {content: "Whatsapp?";} */
+  td:nth-of-type(7):before {
+    content: "";
+  }
+
+  .textoMobile{
+    font-size: small;
+  }
+}
+
+/* perguntas frequentes */
+
+.cardConfig {
+  color: #005ca9;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.accordion .card .card-header :hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.respostaConfig {
+  color: #48586c;
+}
+
+.linkAdm {
+  color: #005ca9;
+  text-decoration: none;
+}
