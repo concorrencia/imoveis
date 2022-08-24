@@ -1,4 +1,3 @@
-
 d = new Date();
 hour = d.getHours();
 

@@ -210,6 +210,10 @@ table,
   td:nth-of-type(5):before {
     content: "Nº Imóvel CAIXA: ";
   }
+  td:nth-of-type(6):before {
+    content: "R$ ";
+  }
+
   /* td:nth-of-type(6):before {content: "Whatsapp?";} */
   td:nth-of-type(7):before {
     content: "";
