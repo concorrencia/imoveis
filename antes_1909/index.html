@@ -38,27 +38,52 @@
     
     <div id="wrapper">
         <nav class="navbar static-top p-2" id="corNav">            
-            <p class= "mt-3 ml-5" id="ola">
+            <button class="navbar-toggler" style="color:white;" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavBar" aria-controls="menuNavBar" aria-expanded="false">
+                <span role="button">
+                    <i class="fas fa-bars m-auto" aria-hidden="true" style="color:#ffffff; font-size:18px;"></i>
+                </span>
+            </button>
+            <p class= "mt-3" id="ola">
                 Olá, <span id="saudacao"></span>
             </p>
             <p id="logo" class= "mt-3 d-none d-md-block">
                 Concorrência Pública - Imóveis PAR
             </p>
+            <div class="collapse navbar-collapse" id="menuNavBar">
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item active" >
+                        <a class="nav-link linksNav" id="todosImoveis" href="listar-uf.html">
+                            Buscar Imóveis
+                        </a>
+                    </li>
+                    <li class="nav-item active" >
+                        <a class="nav-link linksNav" id="todosImoveis" href="listar-todos.html">
+                            Ver Imóveis Disponíveis
+                        </a>
+                    </li>
+                    <li class="nav-item active" >
+                        <a class="nav-link linksNav" href="index.html">
+                            Ver Editais
+                        </a>
+                    </li>                    
+                    <li class="nav-item active d-none">
+                        <a class="nav-link linksNav" href="faq.html">
+                            Perguntas Frequentes
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <div class="body-content">
             <main> 
                 <section class="texto">
-                    <div class="card mt-3 mb-5">
-                        <div class="card-body">
-                            <h1 class="mt-5"><b><i class="fas fa-exclamation-triangle"></i> Atenção</b></h1>
-                            <h2 class="mt-4 mb-5"> 
-                                <b>Informamos que o período de formalização das propostas foi encerrado em 19/09/2022 às 16 horas</b>.
-                            </h2>
-                        </div>
-                    </div>
+                    <p class= "fs-5 lh-lg mt-3">Acompanhe o edital e todas as condições para participar.</p>
+                    <h5 class="mt-3"><b>Aproveite esta Oportunidade!</b></h5>
+                    <a class="btn btn-sm m-auto" role="button" href="listar-todos.html" style="background-color: #005ca9; color: white;">
+                        Clique para ver os Imóveis Disponíveis
+                    </a>
                 </section>
-
                 <section class="edital pl-4 pr-4 pt-2">
                     <div class="card-deck texto textoMobile">
                         <div class="card ">
