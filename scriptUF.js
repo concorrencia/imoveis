@@ -86,32 +86,49 @@ $( document ).ready(function() {
     function uniqueByKey(dados, key) {
         return [...new Map(dados.map((x) => [x[key], x])).values()];
     }
-            
+    
+    var estados = uniqueByKey(dados, 'UF');
+
+    estados.forEach(function(valores, index){
+        var opcao = 
+        `
+            <option value="${valores.UF}">${valores.UF}</option>
+        `
+        $(opcao).appendTo('#Estado');
+    })
+
+    ordenarSelect('Estado')
+
+    var opcaoDisabled = `<option disabled selected>Selecione o Estado</option>`
+    $(opcaoDisabled).appendTo('#Estado');
+
     var cidades = uniqueByKey(dados, 'CIDADE');
 
     cidades.forEach(function(valores, index){
-        var estadoSelecionado = valores.UF
-        
-        if(estadoPar = estadoSelecionado){
-            var opcao = 
-            `
-                <option value="${valores.CIDADE}">${valores.CIDADE}</option>
-            `
-            $(opcao).appendTo('#select'+estadoPar);
-        }
+        var opcao = 
+        `
+            <option class="${valores.UF}dados optionsCidades" value="${valores.CIDADE}">${valores.CIDADE}</option>
+        `
+        $(opcao).appendTo('#selectCidades');
     })
 
-    ordenarSelect('selectRS')
-    ordenarSelect('selectSP')
+    ordenarSelect('selectCidades')
+
+    var opcaoDisabled = `<option class="selecioneCidade" disabled selected>Selecione a Cidade</option>`
+    $(opcaoDisabled).appendTo('#selectCidades');
 
     $(document).on('change', '#Estado', function(){
+        $('.escolhaCidade').css('display','none')
+        $('.optionsCidades').css('display','none')
+        $('.selecioneCidade').prop('selected', true);
+       
+        var estadoSelecionado = $(this).val();
 
+        $(`.${estadoSelecionado}dados`).css('display','block')
         $('.escolhaCidade').css('display','block');
-        var dadosEstado = $(this).val();
-        $('.opcoesCidades').css('display','none');
-        $('#select'+dadosEstado).css('display','block');
+        $('.opcoesCidades').css('display','block');
 
-        $(document).on('change', '#select'+dadosEstado, function(){
+        $(document).on('change', '#selectCidades', function(){
             $('#tblDadosUF').DataTable().clear().destroy();
             
             var cidadeEscolhida = $(this).val()
@@ -125,6 +142,12 @@ $( document ).ready(function() {
                 var cidadeBancoDados = item.CIDADE
                 var cidadeSemEspaco = cidadeBancoDados.replace(/\s/g, '');
 
+                if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
+                    var tipoLeilao = 'LICITAÇÃO ABERTA'
+                } else {
+                    var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
+                }
+
                 if (cidadeEscolhida == cidadeBancoDados){
 
                     $('#dadosUF').css('display','block');
@@ -137,6 +160,7 @@ $( document ).ready(function() {
                             <td class='${cidadeSemEspaco}'>${item.EMPREENDIMENTO}</td> 
                             <td class='${cidadeSemEspaco}'>${item.NU_IMOVEL}</td> 
                             <td class='${cidadeSemEspaco}'>${valorFormatado}</td> 
+                            <td class='${cidadeSemEspaco}'>${tipoLeilao}</td> 
                             <td class='${cidadeSemEspaco}'>
                                 <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
                                     <small>Acesse o link</small>
@@ -152,7 +176,7 @@ $( document ).ready(function() {
             
             });
             
-            _datatableSoExcel('tblDadosUF', '5', 'asc', 'imoveis_concorrencia_publica_par_l001_l002', 10)
+            _datatableSoExcel('tblDadosUF', '5', 'asc', 'imoveis_concorrencia_publica_licitacao_aberta_par', 10)
 
             // _datatableSoExcel('tblDadosUF', '0', 'asc', 'Imoveis Concorrencia Publica PAR', 10)
             // _datatable('tblDadosUF', '0', 'asc', 10)
