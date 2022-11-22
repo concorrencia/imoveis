@@ -142,11 +142,11 @@ $( document ).ready(function() {
                 var cidadeBancoDados = item.CIDADE
                 var cidadeSemEspaco = cidadeBancoDados.replace(/\s/g, '');
 
-                if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
-                    var tipoLeilao = 'LICITAÇÃO ABERTA'
-                } else {
-                    var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
-                }
+                // if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
+                //     var tipoLeilao = 'LICITAÇÃO ABERTA'
+                // } else {
+                //     var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
+                // }
 
                 if (cidadeEscolhida == cidadeBancoDados){
 
@@ -160,7 +160,7 @@ $( document ).ready(function() {
                             <td class='${cidadeSemEspaco}'>${item.EMPREENDIMENTO}</td> 
                             <td class='${cidadeSemEspaco}'>${item.NU_IMOVEL}</td> 
                             <td class='${cidadeSemEspaco}'>${valorFormatado}</td> 
-                            <td class='${cidadeSemEspaco}'>${tipoLeilao}</td> 
+                            <td class='${cidadeSemEspaco}'>${item.AGRUPAMENTO}</td> 
                             <td class='${cidadeSemEspaco}'>
                                 <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
                                     <small>Acesse o link</small>

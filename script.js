@@ -57,11 +57,11 @@ $( document ).ready(function() {
     var venda = item.VALOR_VENDA
     var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
 
-    if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
-      var tipoLeilao = 'LICITAÇÃO ABERTA'
-    } else {
-      var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
-    }
+    // if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
+    //   var tipoLeilao = 'LICITAÇÃO ABERTA'
+    // } else {
+    //   var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
+    // }
     
     var valorFormatado = mascaraValor(venda.toFixed(2))
     var linha =
@@ -73,7 +73,7 @@ $( document ).ready(function() {
           <td>${item.EMPREENDIMENTO}</td> 
           <td>${item.NU_IMOVEL}</td> 
           <td>${valorFormatado}</td> 
-          <td>${tipoLeilao}</td> 
+          <td>${item.AGRUPAMENTO}</td> 
           <td>
             <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
               <small>Acesse o link</small>
