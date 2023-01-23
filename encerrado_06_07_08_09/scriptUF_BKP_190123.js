@@ -72,19 +72,11 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
     });
 }
 
-// function mascaraValor(valor) {
-//     valor = valor.toString().replace(/\D/g,"");
-//     valor = valor.toString().replace(/(\d)(\d{8})$/,"$1.$2");
-//     valor = valor.toString().replace(/(\d)(\d{5})$/,"$1.$2");
-//     valor = valor.toString().replace(/(\d)(\d{2})$/,"$1,$2");
-//     return valor                    
-// }
-
 function mascaraValor(valor) {
-    valor = valor.replace(/\D/g,"");
-    valor = valor.replace(/(\d)(\d{8})$/,"$1.$2");
-    valor = valor.replace(/(\d)(\d{5})$/,"$1.$2");
-    valor = valor.replace(/(\d)(\d{2})$/,"$1,$2");
+    valor = valor.toString().replace(/\D/g,"");
+    valor = valor.toString().replace(/(\d)(\d{8})$/,"$1.$2");
+    valor = valor.toString().replace(/(\d)(\d{5})$/,"$1.$2");
+    valor = valor.toString().replace(/(\d)(\d{2})$/,"$1,$2");
     return valor                    
 }
 
@@ -143,16 +135,12 @@ $( document ).ready(function() {
 
             dados.forEach(function(item, index){
 
-                var venda = parseFloat(item.VALOR_VENDA);
-                //var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
-                var valorFormatado = mascaraValor(venda.toFixed(2));
-                //var valorVendaFormatado = String(venda.toFixed(2)).replace('.',',');
+                var venda = item.VALOR_VENDA
+                var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+                var valorFormatado = mascaraValor(venda.toFixed(2))
 
                 var cidadeBancoDados = item.CIDADE
                 var cidadeSemEspaco = cidadeBancoDados.replace(/\s/g, '');
-
-                //var cidadeFormatado = (item.CIDADE).replace("'"," ");
-
 
                 // if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
                 //     var tipoLeilao = 'LICITAÇÃO ABERTA'
@@ -173,7 +161,6 @@ $( document ).ready(function() {
                             <td class='${cidadeSemEspaco}'>${item.NU_IMOVEL}</td> 
                             <td class='${cidadeSemEspaco}'>${valorFormatado}</td> 
                             <td class='${cidadeSemEspaco}'>${item.AGRUPAMENTO}</td> 
-                            <td class='${cidadeSemEspaco}'>${item.STATUS_IMOVEL}</td> 
                             <td class='${cidadeSemEspaco}'>
                                 <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
                                     <small>Acesse o link</small>

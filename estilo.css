@@ -263,11 +263,12 @@ table,
   }
   td:nth-of-type(6):before {
     content: "R$ ";
+   
   }
 
   /* td:nth-of-type(6):before {content: "Whatsapp?";} */
   td:nth-of-type(7):before {
-    content: "";
+    content: "Nº Leilão";
   }
 
   .textoMobile{
@@ -296,4 +297,81 @@ table,
 .linkAdm {
   color: #005ca9;
   text-decoration: none;
+}
+
+.perguntasCinza {
+  color: #3A4859;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.respostaAzul {
+  color: #004C8C;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.texto-destaque {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.banner {
+  height: 300px;
+  width: 50%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.banner-content {
+  text-align: center;
+  color: white;
+}
+.banner-button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.banner-button:hover {
+  background-color: #0072a7;
+}
+
+.banner-button-laranja {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.banner-button-laranja:hover {
+  background-color: #ec7500;
+}
+
+@media only screen and (max-width: 600px) {
+  .banner {
+    height: 200px; /* altera a altura do banner para dispositivos menores */
+  }
+  .banner-text {
+    font-size: 16px; /* altera o tamanho da fonte para dispositivos menores */
+  }
+  .banner-image {
+    display: none; /* esconde a imagem em dispositivos menores */
+  }
+  .banner-button {
+    font-size: 14px; /* altera o tamanho da fonte do botão para dispositivos menores */
+  }
+}
+
+/* icones index */
+.icone-index {
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 5px;
+}
+
+/* altura jumbotron */
+.altura-jumbotron {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
