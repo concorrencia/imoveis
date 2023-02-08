@@ -42,66 +42,56 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
   });
 }
 
-// function mascaraValor(valor) {
-//   valor = valor.toString().replace(/\D/g,"");
-//   valor = valor.toString().replace(/(\d)(\d{8})$/,"$1.$2");
-//   valor = valor.toString().replace(/(\d)(\d{5})$/,"$1.$2");
-//   valor = valor.toString().replace(/(\d)(\d{2})$/,"$1,$2");
-//   return valor                    
-// }
-
 function mascaraValor(valor) {
-  valor = valor.replace(/\D/g,"");
-  valor = valor.replace(/(\d)(\d{8})$/,"$1.$2");
-  valor = valor.replace(/(\d)(\d{5})$/,"$1.$2");
-  valor = valor.replace(/(\d)(\d{2})$/,"$1,$2");
-  return valor                    
+  return valor.toString().replace(/\D/g, "").replace(/(\d)(\d{8})$/, "$1.$2").replace(/(\d)(\d{5})$/, "$1.$2").replace(/(\d)(\d{2})$/, "$1,$2");
 }
 
-
 $( document ).ready(function() {
-  $('.loadingPagina').css('display', 'block')
+  $('.loadingPagina').css('display', 'block');
     
-  dados.forEach(function(item, index){
-    var venda = parseFloat(item.VALOR_VENDA);
-    //var valorMinimo = venda.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+  var database = firebase.database();
+        database.ref("REVISTA").once("value", function(snapshot) {
+        var dados = snapshot.val();
+        console.log(dados);
 
-    // if (item.NU_IMOVEL == '240021088' || item.NU_IMOVEL == '240020073') {
-    //   var tipoLeilao = 'LICITAÇÃO ABERTA'
-    // } else {
-    //   var tipoLeilao = 'CONCORRÊNCIA PÚBLICA'
-    // }
-    
-    var valorFormatado = mascaraValor(venda.toFixed(2));
-
-    //var valorVendaFormatado = String(venda.toFixed(2)).replace('.',',');
-    var cidadeFormatado = (item.CIDADE).replace("'"," ");
-    
-
-    var linha =
-      `
-        <tr> 
-          <td>${item.UF}</td> 
-          <td>${cidadeFormatado}</td> 
-          <td>${item.ENDERECO_IMOVEL} - ${item.CEP}</td> 
-          <td>${item.EMPREENDIMENTO}</td> 
-          <td>${item.NU_IMOVEL}</td> 
-          <td>${valorFormatado}</td> 
-          <td>${item.AGRUPAMENTO}</td> 
-          <td>${item.STATUS_IMOVEL}</td> 
-          <td>
-            <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
-              <small>Acesse o link</small>
-            </a>
-          </td> 
-        </tr>
-      `;
+    Object.values(dados).forEach(function(grupo){
       
-    $(linha).appendTo('#tblImoveisPar>tbody');
-  });
+      var dataJaExibida = false;
 
-  // _datatable('tblImoveisPar', '0', 'asc', 10)
-  _datatableSoExcel('tblImoveisPar', '5', 'asc', 'imoveis_concorrencia_publica_licitacao_aberta_par', 10)
-  $('.loadingPagina').css('display', 'none')
-   
-})
+      grupo.forEach(function(item){
+        var venda = parseFloat(item.VALOR_VENDA);
+        var valorFormatado = mascaraValor(venda.toFixed(2));
+
+          var linha =
+        `
+          <tr> 
+            <td>${item.UF}</td> 
+            <td>${item.CIDADE}</td> 
+            <td>${item.ENDERECO_IMOVEL} - ${item.CEP}</td> 
+            <td>${item.EMPREENDIMENTO}</td> 
+            <td>${item.NU_IMOVEL}</td> 
+            <td>${valorFormatado}</td> 
+            <td>${item.AGRUPAMENTO}</td> 
+            <td>${item.STATUS_IMOVEL}</td> 
+            <td>
+              <a href="${item.LINK}" target="_blank" class="btn btn-sm m-auto" role="button" style="background-color: #005ca9; color: white;">
+                <small>Acesse o link</small>
+              </a>
+            </td> 
+          </tr>
+        `;
+
+        var dataAtualiza = item.DATA_POSICAO;
+        if(!dataJaExibida) {
+          $("#ultima-atualizacao").html(dataAtualiza);
+          console.log (dataAtualiza);
+          dataJaExibida = true;
+        }
+
+        $(linha).appendTo('#tblImoveisPar>tbody');
+      });
+      _datatableSoExcel('tblImoveisPar', '5', 'asc', 'imoveis_concorrencia_publica_licitacao_aberta_par', 10)
+    });
+    $('.loadingPagina').css('display', 'none');
+  });   
+});
